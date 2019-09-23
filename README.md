@@ -1,4 +1,7 @@
-# proyecto-IV
+# Meals
 
-Tanto el nombre de este repositorio como el contenido de este fichero son
-provisionales y se actualizarán cuando se determine el proyecto.
+## Descripción
+
+El servicio dispondrá de una base de datos de recetas e ingredientes, y
+permitirá la elaboración de menús teniendo en cuenta restricciones editables por
+el usuario.
