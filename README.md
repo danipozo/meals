@@ -13,6 +13,8 @@ El lenguaje de programación que se usará principalmente será
 
  - Las dependencias del código en Rust se gestionarán con
    [Cargo](https://doc.rust-lang.org/cargo/index.html).
+ - Para definir *tests*, se usará [la funcionalidad que incorpora
+   Rust](https://doc.rust-lang.org/book/ch11-00-testing.html) a tal efecto.
  - Para gestionar los *logs*, se planea usar un servicio que puede ser
    [Logstash](https://www.elastic.co/products/logstash).
  - El *framework* que se usará para exponer la API, en principio de tipo REST,
