@@ -1,0 +1,21 @@
+[package]
+name = "meals"
+version = "0.0.1"
+authors = ["Dani Pozo <danipozo@correo.ugr.es>"]
+edition = "2018"
+
+[lib]
+name = "meals"
+path = "src/lib.rs"
+test = true
+edition = "2018"
+
+[dependencies]
+diesel = { version = "1.4", features = ["sqlite"] }
+diesel_migrations = "1.4"
+dotenv = "0.14"
+
+[dependencies.rocket_contrib]
+version = "0.4"
+default-features = false
+features = [ "diesel_sqlite_pool" ]
