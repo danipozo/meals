@@ -15,14 +15,23 @@ pub struct Recipe {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::diesel::dsl::*;
     use crate::diesel::prelude::*;
     use crate::diesel::Connection;
     use crate::schema::ingredient::dsl::*;
+    use diesel_migrations::run_pending_migrations;
 
     #[test]
     fn query_ingredients() {
-        let conn = diesel::SqliteConnection::establish("test.sqlite")
-            .expect("Error connecting to database");
+        let conn =
+            diesel::SqliteConnection::establish(":memory:").expect("Error connecting to database");
+
+        run_pending_migrations(&conn).expect("Error running migrations");
+
+        insert_into(ingredient)
+            .values(name.eq("Test ingredient"))
+            .execute(&conn)
+            .expect("Error inserting ingredient");
 
         let _result = ingredient
             .limit(5)
