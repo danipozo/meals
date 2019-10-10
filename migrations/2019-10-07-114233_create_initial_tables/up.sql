@@ -4,7 +4,7 @@ create table if not exists ingredient (
 );
 
 create table if not exists recipe (
-   id int primary key not null,
+   id integer primary key not null,
    name varchar(255),
    preparation_time int not null check (0 < preparation_time), -- expressed in minutes
    main_ingredient int,
