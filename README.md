@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/danipozo/meals.svg?branch=master)](https://travis-ci.com/danipozo/meals)
+
 # Meals
 
 ## Descripción
