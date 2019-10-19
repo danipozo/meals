@@ -1,15 +1,22 @@
 #[derive(Queryable, Debug)]
 pub struct Ingredient {
     pub id: i32,
-    pub name: Option<String>,
+    pub name: String,
+    pub energy: Option<i32>,
+    pub carbohydrates: Option<i32>,
+    pub sugar: Option<i32>,
+    pub proteins: Option<i32>,
+    pub fat: Option<i32>,
+    pub ing_type: i32,
 }
 
 #[derive(Queryable)]
 pub struct Recipe {
     pub id: i32,
-    pub name: Option<String>,
+    pub name: String,
     pub preparation_time: i32,
-    pub main_ingredient: Option<i32>,
+    pub serves: i32,
+    pub preparation: String,
 }
 
 #[cfg(test)]
@@ -30,7 +37,7 @@ mod tests {
         run_pending_migrations(&conn).expect("Error running migrations");
 
         insert_into(ingredient)
-            .values(name.eq("Test ingredient"))
+            .values((name.eq("Test ingredient"), ing_type.eq(1)))
             .execute(&conn)
             .expect("Error inserting ingredient");
 
@@ -53,7 +60,8 @@ mod tests {
             .values((
                 name.eq("Test ingredient"),
                 preparation_time.eq(20),
-                main_ingredient.eq(0),
+                serves.eq(2),
+                preparation.eq("Preparation text"),
             ))
             .execute(&conn)
             .expect("Error inserting ingredient");
