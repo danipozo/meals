@@ -16,9 +16,9 @@ create table if not exists ingredient_type (
   type_desc varchar(50)
 );
 
-insert or ignore into ingredient_type(type_desc) values ('Carne'), ('Pescado'), ('Pasta'), ('Legumbre'),
-                                             ('Fruta'), ('Verdura'), ('Condimento'), ('Fruto seco'),
-					     ('Graso'), ('Otro');
+insert or ignore into ingredient_type(id, type_desc) values (1, 'Carne'), (2, 'Pescado'), (3, 'Pasta'), (4, 'Legumbre'),
+                                             (5, 'Fruta'), (6, 'Verdura'), (7, 'Condimento'), (8, 'Fruto seco'),
+					     (9, 'Graso'), (255, 'Otro');
 
 create table if not exists recipe (
    id integer primary key not null,
@@ -33,7 +33,7 @@ create table if not exists units (
   unit varchar(10)
 );
 
-insert or ignore into units(unit) values ('gr'), ('ml'), ('cucharada');
+insert or ignore into units(id, unit) values (1, 'gr'), (2, 'ml'), (3, 'cucharada');
 
 create table if not exists uses (
   recipe int not null,
