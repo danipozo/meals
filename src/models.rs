@@ -19,6 +19,12 @@ pub struct Recipe {
     pub preparation: String,
 }
 
+#[derive(Queryable)]
+pub struct Menu {
+    pub id: i32,
+    pub description: Option<String>,
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
