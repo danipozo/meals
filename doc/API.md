@@ -16,3 +16,5 @@ El microservicio expone una [API REST](https://en.wikipedia.org/wiki/Representat
 |                     | `DELETE`      | Borra el menú con identificador `id`                                   |
 | `/ingredients`      | `GET`         | Lista los ingredientes almacenados                                     |
 | `/ingredients/<id>` | `GET`         | Devuelve la información relativa al ingrediente con identificador `id` |
+| `/recipes`          | `GET`         | Lista las recetas almacenadas                                          |
+| `/recipes/<id>`     | `GET`         | Devuelve una representación de la receta con identificador `id`        |

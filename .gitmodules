@@ -1,0 +1,3 @@
+[submodule "libminizinc"]
+	path = libminizinc
+	url = https://github.com/MiniZinc/libminizinc
