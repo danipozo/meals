@@ -1,4 +1,6 @@
-#[derive(Queryable, Debug)]
+use crate::schema::{ingredient, recipe, uses};
+
+#[derive(Queryable, Clone)]
 pub struct Ingredient {
     pub id: i32,
     pub name: String,
@@ -10,13 +12,19 @@ pub struct Ingredient {
     pub ing_type: i32,
 }
 
-#[derive(Queryable)]
+#[derive(Queryable, PartialEq, Clone)]
 pub struct Recipe {
     pub id: i32,
     pub name: String,
     pub preparation_time: i32,
     pub serves: i32,
     pub preparation: String,
+}
+
+#[derive(Queryable)]
+pub struct Uses {
+    pub recipe: i32,
+    pub ingredient: i32,
 }
 
 #[derive(Queryable)]
