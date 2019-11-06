@@ -7,6 +7,12 @@
 El servicio dispondrá de una base de datos de recetas e ingredientes, y
 permitirá la elaboración de menús a partir de restricciones.
 
+## Uso
+
+`buildtool: Makefile`
+
+Se puede lanzar el microservicio con `make start`, y pararlo con `make stop`.
+
 ## Herramientas
 
 El lenguaje de programación que se usará principalmente será
