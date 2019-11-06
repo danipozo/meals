@@ -2,6 +2,8 @@
 
 El microservicio expone una [API REST](https://en.wikipedia.org/wiki/Representational_state_transfer) a través de HTTP.
 
+En el diseño de la API, se ha intentado atender a las recomendaciones [de este documento](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
+
 ## Rutas
 
 
