@@ -1,4 +1,7 @@
 language: rust
 rust: nightly
+script: make test
 
-cache: cargo
+cache:
+  - cargo
+  - directories: bin
