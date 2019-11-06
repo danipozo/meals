@@ -1,0 +1,4 @@
+[[process]]
+name = "meals"
+cmd = "cargo"
+args = [["run"]]
