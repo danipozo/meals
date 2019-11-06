@@ -9,7 +9,7 @@ permitirá la elaboración de menús a partir de restricciones.
 
 ## Uso
 
-`buildtool: Makefile`
+`buildtool: Makefile `
 
 Se puede lanzar el microservicio con `make start`, y pararlo con `make stop`.
 
