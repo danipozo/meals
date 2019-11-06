@@ -4,7 +4,7 @@ extern crate serde;
 use derive_builder::Builder;
 use serde::Serialize;
 
-#[derive(Queryable, Serialize, Clone, Debug)]
+#[derive(Queryable, Serialize, Builder, Clone)]
 pub struct Ingredient {
     pub id: i32,
     pub name: String,
@@ -16,7 +16,19 @@ pub struct Ingredient {
     pub ing_type: String,
 }
 
-#[derive(Serialize, Builder, Debug)]
+impl IngredientBuilder {
+    pub fn from_db_struct(&mut self, i: &models::Ingredient) -> &mut Self {
+        self.id(i.id)
+            .name(i.name.clone())
+            .energy(i.energy)
+            .carbohydrates(i.carbohydrates)
+            .sugar(i.sugar)
+            .proteins(i.proteins)
+            .fat(i.fat)
+    }
+}
+
+#[derive(Serialize, Builder)]
 pub struct Recipe {
     pub id: i32,
     pub name: String,
@@ -36,4 +48,11 @@ impl RecipeBuilder {
             .serves(r.serves)
             .preparation(r.preparation.clone())
     }
+}
+
+#[derive(Serialize)]
+pub struct Menu {
+    pub id: i32,
+    pub description: String,
+    // TODO: rest of fields
 }
