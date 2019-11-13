@@ -1,14 +1,20 @@
 # API
 
-El microservicio expone una [API REST](https://en.wikipedia.org/wiki/Representational_state_transfer) a través de HTTP.
+El microservicio expone una [API
+REST](https://en.wikipedia.org/wiki/Representational_state_transfer) a través de
+HTTP.
 
-En el diseño de la API, se ha intentado atender a las recomendaciones [de este documento](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
+Todos los mensajes se devuelven en formato JSON.
+
+En el diseño de la API, se ha intentado atender a las recomendaciones [de este
+documento](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
 
 ## Rutas
 
 
 | Ruta                | Método        | Efecto                                                                 |
 |---------------------|---------------|------------------------------------------------------------------------|
+| `/status`           | `GET`         | Devuelve `{"status":"OK"}`                                             |
 | `/menus`            | `GET`         | Lista los menús almacenados                                            |
 |                     | `PUT`/`PATCH` | Permite actualizar, a lo sumo, las descripciones de una serie de menús |
 |                     | `POST`        | Crea un nuevo menú a partir de una serie de restricciones              |
