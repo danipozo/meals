@@ -1,6 +1,9 @@
 start: .igniterc bin/igniter
 	bin/igniter
 
+build:
+	cargo build
+
 test: db/test.sqlite
 	cargo test
 
