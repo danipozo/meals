@@ -12,7 +12,7 @@ permitirá la elaboración de menús a partir de restricciones.
 `buildtool: Makefile `
 
 Las órdenes para arrancar y parar el servicio, construirlo y ejecutar las
-pruebas están escritas en el [`Makefile`](../Makefile), y son las siguientes:
+pruebas están escritas en el [`Makefile`](Makefile), y son las siguientes:
 
 - `start`: arranca el servicio.
 - `stop`: para el servicio.
