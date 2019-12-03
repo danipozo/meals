@@ -5,10 +5,14 @@ extern crate rocket;
 #[macro_use]
 extern crate diesel;
 #[macro_use]
+extern crate diesel_migrations;
+#[macro_use]
 extern crate rocket_contrib;
+#[macro_use]
+extern crate log;
 
 #[database("meals")]
-struct MealsDbConn(diesel::SqliteConnection);
+struct MealsDbConn(diesel::PgConnection);
 
 pub mod models;
 pub mod schema;
@@ -17,6 +21,7 @@ pub mod api_structs;
 
 mod api_test;
 
+use rocket::fairing::AdHoc;
 use rocket::http::Status;
 use rocket::response::{content, status};
 use rocket_contrib::json::Json;
@@ -229,19 +234,33 @@ fn status() -> content::Json<String> {
     content::Json(String::from(r#"{ "status" : "OK" }"#))
 }
 
+embed_migrations!();
+
 fn rocket() -> rocket::Rocket {
-    rocket::ignite().attach(MealsDbConn::fairing()).mount(
-        "/",
-        routes![
-            get_menu,
-            get_menus,
-            get_recipes,
-            get_recipe,
-            get_ingredients,
-            get_ingredient,
-            status
-        ],
-    )
+    rocket::ignite()
+        .attach(MealsDbConn::fairing())
+        .attach(AdHoc::on_attach("Database migrations", |rocket| {
+            let conn = MealsDbConn::get_one(&rocket).expect("Database connections");
+            match embedded_migrations::run(&*conn) {
+                Ok(()) => Ok(rocket),
+                Err(e) => {
+                    error!("Database error: {}", e);
+                    Err(rocket)
+                }
+            }
+        }))
+        .mount(
+            "/",
+            routes![
+                get_menu,
+                get_menus,
+                get_recipes,
+                get_recipe,
+                get_ingredients,
+                get_ingredient,
+                status
+            ],
+        )
 }
 
 fn main() {
