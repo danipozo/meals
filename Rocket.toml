@@ -1,5 +1,0 @@
-[development.databases]
-meals = { url = "db/test.sqlite" }
-
-[production.databases]
-meals = { url = "db/meals.sqlite" }
