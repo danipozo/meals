@@ -1,62 +1,62 @@
 table! {
     includes (menu, recipe) {
-        menu -> Integer,
-        recipe -> Integer,
-        day_number -> Integer,
+        menu -> Int4,
+        recipe -> Int4,
+        day_number -> Int4,
     }
 }
 
 table! {
     ingredient (id) {
-        id -> Integer,
-        name -> Text,
-        energy -> Nullable<Integer>,
-        carbohydrates -> Nullable<Integer>,
-        sugar -> Nullable<Integer>,
-        proteins -> Nullable<Integer>,
-        fat -> Nullable<Integer>,
-        ing_type -> Integer,
+        id -> Int4,
+        name -> Varchar,
+        energy -> Nullable<Int4>,
+        carbohydrates -> Nullable<Int4>,
+        sugar -> Nullable<Int4>,
+        proteins -> Nullable<Int4>,
+        fat -> Nullable<Int4>,
+        ing_type -> Int4,
     }
 }
 
 table! {
     ingredient_type (id) {
-        id -> Integer,
-        type_desc -> Text,
+        id -> Int4,
+        type_desc -> Varchar,
     }
 }
 
 table! {
     menu (id) {
-        id -> Integer,
+        id -> Int4,
         description -> Nullable<Text>,
     }
 }
 
 table! {
     recipe (id) {
-        id -> Integer,
-        name -> Text,
-        preparation_time -> Integer,
-        serves -> Integer,
+        id -> Int4,
+        name -> Varchar,
+        preparation_time -> Int4,
+        serves -> Int4,
         preparation -> Text,
     }
 }
 
 table! {
     units (id) {
-        id -> Integer,
-        unit -> Nullable<Text>,
+        id -> Int4,
+        unit -> Nullable<Varchar>,
     }
 }
 
 table! {
     uses (recipe, ingredient) {
-        recipe -> Integer,
-        ingredient -> Integer,
-        main_ingredient -> Integer,
-        quantity -> Integer,
-        unit -> Nullable<Integer>,
+        recipe -> Int4,
+        ingredient -> Int4,
+        main_ingredient -> Int4,
+        quantity -> Int4,
+        unit -> Nullable<Int4>,
     }
 }
 
