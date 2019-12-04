@@ -22,7 +22,7 @@ insert into ingredient_type(id, type_desc) values (1, 'Carne'), (2, 'Pescado'), 
 on conflict do nothing;
 
 create table if not exists recipe (
-   id serial not null,
+   id serial primary key not null,
    name varchar(255) not null,
    preparation_time int not null check (0 < preparation_time), -- expressed in minutes
    serves int not null check (0 < serves),
@@ -51,7 +51,7 @@ create table if not exists uses (
 );
 
 create table if not exists menu (
-  id serial not null,
+  id serial primary key not null,
   description text
 );
 
