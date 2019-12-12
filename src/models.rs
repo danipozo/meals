@@ -1,5 +1,3 @@
-use crate::schema::{ingredient, recipe, uses};
-
 #[derive(Queryable, Clone)]
 pub struct Ingredient {
     pub id: i32,
@@ -36,24 +34,22 @@ pub struct Menu {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::diesel::dsl::*;
     use crate::diesel::prelude::*;
     use crate::diesel::Connection;
     use diesel_migrations::run_pending_migrations;
+
+    use std::env;
 
     #[test]
     fn query_ingredients() {
         use crate::schema::ingredient::dsl::*;
 
+        let database_url = env::var("DATABASE_URL").expect("Database URL in environment");
+
         let conn =
-            diesel::SqliteConnection::establish(":memory:").expect("Error connecting to database");
+            diesel::PgConnection::establish(&database_url).expect("Error connecting to database");
 
         run_pending_migrations(&conn).expect("Error running migrations");
-
-        insert_into(ingredient)
-            .values((name.eq("Test ingredient"), ing_type.eq(1)))
-            .execute(&conn)
-            .expect("Error inserting ingredient");
 
         let _result = ingredient
             .limit(5)
@@ -65,20 +61,12 @@ mod tests {
     fn query_recipes() {
         use crate::schema::recipe::dsl::*;
 
+        let database_url = env::var("DATABASE_URL").expect("Database URL in environment");
+
         let conn =
-            diesel::SqliteConnection::establish(":memory:").expect("Error connecting to database");
+            diesel::PgConnection::establish(&database_url).expect("Error connecting to database");
 
         run_pending_migrations(&conn).expect("Error running migrations");
-
-        insert_into(recipe)
-            .values((
-                name.eq("Test ingredient"),
-                preparation_time.eq(20),
-                serves.eq(2),
-                preparation.eq("Preparation text"),
-            ))
-            .execute(&conn)
-            .expect("Error inserting ingredient");
 
         let _result = recipe
             .limit(5)
