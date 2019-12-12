@@ -5,7 +5,7 @@ build:
 	cargo build
 
 test: db/test.sqlite
-	cargo test
+	ROCKET_DATABASES="{ meals = { url = \"$(DATABASE_URL)\" } }" RUST_TEST_THREADS=1 cargo test
 
 stop:
 	bin/igniter stop meals
@@ -15,8 +15,8 @@ bin/igniter:
 
 db/test.sqlite: bin/diesel
 	mkdir -p db
-	DATABASE_URL="$@" bin/diesel migration run
-	DATABASE_URL="$@" bin/diesel migration --migration-dir migrations_test run
+	bin/diesel migration run
+	bin/diesel migration --migration-dir migrations_test run
 
 bin/diesel:
 	cargo install diesel_cli --no-default-features --features sqlite --root .
