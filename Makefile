@@ -4,6 +4,11 @@ start: .igniterc bin/igniter
 build:
 	cargo build
 
+deploy:
+	heroku create $(APP_NAME) --buildpack https://github.com/danipozo/heroku-buildpack-rust
+	heroku addons:create heroku-postgresql:hobby-dev
+	git push heroku master
+
 test: db/test.sqlite
 	ROCKET_DATABASES="{ meals = { url = \"$(DATABASE_URL)\" } }" RUST_TEST_THREADS=1 cargo test
 
