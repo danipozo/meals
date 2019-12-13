@@ -36,6 +36,7 @@ use schema::uses::dsl as uses_dsl;
 use itertools::Itertools;
 
 #[get("/menus")]
+#[allow(unused_variables)]
 fn get_menus(conn: MealsDbConn) -> Result<Json<api_structs::Menu>, status::Custom<String>> {
     Err(status::Custom(
         Status::NotImplemented,
@@ -44,6 +45,7 @@ fn get_menus(conn: MealsDbConn) -> Result<Json<api_structs::Menu>, status::Custo
 }
 
 #[get("/menus/<id>")]
+#[allow(unused_variables)]
 fn get_menu(
     id: usize,
     conn: MealsDbConn,

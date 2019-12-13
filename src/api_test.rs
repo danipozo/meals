@@ -1,6 +1,9 @@
 #[cfg(test)]
 use super::rocket;
+
+#[allow(unused_imports)]
 use rocket::http::Status;
+#[allow(unused_imports)]
 use rocket::local::Client;
 
 /// Paths that should return status 200 OK are tested here
