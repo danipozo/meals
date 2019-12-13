@@ -37,8 +37,8 @@ create table if not exists units (
 insert into units(id, unit) values (1, 'gr'), (2, 'ml'), (3, 'unidad') on conflict do nothing;
 
 create table if not exists uses (
-  recipe integer not null unique,
-  ingredient integer not null unique,
+  recipe integer not null,
+  ingredient integer not null,
   main_ingredient int not null check (main_ingredient = 0 or main_ingredient = 1), -- whether this is a main ingredient of the recipe
 
   quantity int not null,
