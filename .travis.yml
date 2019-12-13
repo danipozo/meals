@@ -12,7 +12,7 @@ services:
 env:
   global:
     - DATABASE_URL="postgres://postgres@localhost:5432/meals"
-    - ROCKET_DATABASES="{ meals = { url = \"$DATABASE_URL\" } }"
 
 before_script:
   - psql -c 'create database meals;' -U postgres
+  - export ROCKET_DATABASES="{ meals = { url = \"$DATABASE_URL\" } }"
