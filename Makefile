@@ -9,7 +9,7 @@ deploy:
 	heroku addons:create heroku-postgresql:hobby-dev
 	git push heroku master
 
-test: migrations
+test: migrations-target
 	ROCKET_DATABASES="{ meals = { url = \"$(DATABASE_URL)\" } }" RUST_TEST_THREADS=1 cargo test
 
 stop:
@@ -18,7 +18,7 @@ stop:
 bin/igniter:
 	cargo install --root . igniter
 
-migrations: bin/diesel
+migrations-target: bin/diesel
 	bin/diesel migration run
 	bin/diesel migration --migration-dir migrations_test run
 
