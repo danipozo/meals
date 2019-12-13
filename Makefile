@@ -23,4 +23,4 @@ migrations-target: bin/diesel
 	bin/diesel migration --migration-dir migrations_test run
 
 bin/diesel:
-	cargo install diesel_cli --no-default-features --features sqlite --root .
+	cargo install diesel_cli --no-default-features --features postgres --root .
