@@ -5,6 +5,7 @@ build:
 	cargo build
 
 deploy:
+	heroku login
 	heroku create $(APP_NAME) --buildpack https://github.com/danipozo/heroku-buildpack-rust
 	heroku addons:create heroku-postgresql:hobby-dev
 	git push heroku master
