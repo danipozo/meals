@@ -11,6 +11,8 @@ permitirá la elaboración de menús a partir de restricciones.
 
 Las instrucciones para desplegarlo están en [la documentación](doc/Despliegue.md).
 
+Despliegue: https://iv-meals.herokuapp.com/status
+
 ## Herramienta de construción
 
 Se usa un `Makefile`. Documentación [aquí](doc/HerramientaConstrucción.md).
