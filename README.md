@@ -11,7 +11,7 @@ permitirá la elaboración de menús a partir de restricciones.
 
 Las instrucciones para desplegarlo están en [la documentación](doc/Despliegue.md).
 
-Despliegue: https://iv-meals.herokuapp.com/status
+Despliegue: https://iv-meals.herokuapp.com
 
 ## Herramienta de construción
 
