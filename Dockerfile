@@ -14,10 +14,7 @@ RUN apt install -y curl
 RUN curl https://sh.rustup.rs -sSf > rustup.sh
 RUN apt install -y build-essential
 RUN sh rustup.sh -y --default-toolchain "$(cat rust-toolchain)"
-# RUN apk add libgcc
-# RUN source $HOME/.cargo/env && cargo build --release
-# RUN apk add cargo
 RUN apt install -y libpq-dev
 RUN source $HOME/.cargo/env && cargo build --release
 
-CMD ["/root/target/release/meals"]
+CMD ROCKET_DATABASES="{ meals={ url=\"$DATABASE_URL\" } }" ROCKET_PORT=$PORT /root/target/release/meals
