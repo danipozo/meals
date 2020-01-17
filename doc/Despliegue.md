@@ -16,6 +16,10 @@ El [`Makefile`](../Makefile) incluye una tarea para desplegar en Heroku,
 Se debe llamar a `make deploy`, proveyendo el nombre de la aplicación que se
 quiere desplegar como una variable de entorno, `APP_NAME`.
 
+#### Con Docker
+
+En lugar de `make deploy`, se debe usar la orden `make docker-deploy`.
+
 ### Funcionamiento
 
 La ejecución del despliegue se resume en:
@@ -24,7 +28,9 @@ La ejecución del despliegue se resume en:
      específico para su funcionamiento (Heroku no provee un *buildpack* oficial
      para Rust).
   2. Añadir una base de datos de PostgreSQL gestionada a la aplicación.
-  3. Empujar el código a Heroku para el despliegue.
+  3. Si se despliega sin Docker: empujar el código a Heroku para el despliegue.
+     Si se usa Docker: construir y empujar la imagen de Docker al registro de
+     Heroku, y lanzarla.
 
 ### Configuración para despliegue continuo
 
