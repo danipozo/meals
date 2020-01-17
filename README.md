@@ -12,6 +12,11 @@ permitirá la elaboración de menús a partir de restricciones.
 Las instrucciones para desplegarlo están en [la documentación](doc/Despliegue.md).
 
 Despliegue: https://iv-meals.herokuapp.com
+Contenedor: https://iv-meals.herokuapp.com
+
+## Imagen de Docker
+
+El Dockerfile se encuentra documentado [aquí](doc/Docker.md).
 
 ## Herramienta de construción
 
